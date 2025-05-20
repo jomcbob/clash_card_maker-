@@ -1,42 +1,234 @@
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100svw;
+  min-height: 100vh;
+  background: url(./assets/imgs/background.png);
+  background-size: cover; 
+}
+
+div {
+  word-break: break-all;
+}
+
+header {
+  height: 10%;
+  width: 100svw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5vh;
+  background-color: rgba(173, 216, 230, 0.7);
+}
+
+label {
+  color: white;
+  font-weight: bold;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100svw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  gap: 2vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.container {
+  min-height: 90vh;
+  display: flex;
+  height: 90%;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  gap: 2vh;
 }
 
 .card {
-  padding: 2em;
+  height: 60vh;
+  width: 50vh;
+  background-color: rgba(173, 216, 230, 0.7);
+  padding: 1vh;
+  border-radius: 3%;
+  display: flex;
+  flex-direction: column;
+  font-size: 3vh;
+  gap: 2vh;
+  border: 0.5vh solid #ccc;
 }
 
-.read-the-docs {
-  color: #888;
+.rarity-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.card-frame {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
+
+.card-image {
+  border-radius: 10px;
+  width: 170px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+  object-position: center;
+  word-break: normal;
+  text-align: center;
+}
+
+.cardTop {
+  display: flex;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  padding: 5vh;
+  width: 30%;
+  min-height: 300px;
+  max-height: 70vh;
+  overflow-y: scroll;
+  border-radius: 10px;
+  background-color: rgb(95, 158, 160, 0.5);
+} 
+
+.inputs * {
+  width: 100%;
+  font-size: 3vh;
+  height: 4vh;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  min-height: fit-content;
+}
+
+.inputs *:hover:not(label):not(.label),
+.inputs *:focus:not(label):not(.label) {
+  background-color: gray;
+  outline: 4px auto black;
+  color: white;
+}
+
+.display {
+  width: 100%;
+  padding: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flagBox {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color:#CCCCCC;
+  width: 14vh;
+}
+
+.flag {
+  width: 80%;
+  background-color:#23549c;
+}
+
+.common {
+  background-color: 	#CCCCCC;
+  border-radius: 10px;
+}
+
+.rare {
+  background-color: #FF9933;
+  border-radius: 10px;
+}
+
+.epic {
+  background-color: #9933CC; 
+  border-radius: 10px;
+}
+
+.legendary {
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #d4d4d4 20%,
+    #b8b8ff 40%,
+    #ffb8ff 60%,
+    #ffd1b8 80%,
+    #ffffff 100%
+  );
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+.champion {
+  background: linear-gradient(135deg, #FFA500, #FFD700);
+  text-shadow: 0 0 5px rgba(0, 104, 230, 0.7);
+  border-radius: 10px;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  gap: 2vh;
+}
+
+.name {
+  font-size: 5vh;
+}
+
+.cardBottom {
+  border: 5px solid gray;
+  flex: auto;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.card-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 90vw;
+    height: auto;
+  }
+
+  .inputs {
+    width: 90vw;
+  }
+
+  .flexRow {
+    flex-wrap: wrap;
+  }
+
+  header {
+    font-size: 4vh;
+  }
 }

@@ -1,33 +1,85 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { useState } from 'react';
+import { Name, Rarity, Level, Type, ImageUpload, Elixir } from './components/formInputs';
+import { DisplayName, DisplayRarity, DisplayLevel, DisplayType, DisplayImage } from './components/form';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState('card')
+  const [rarity, setRarity] = useState('common')
+  const [level, setLevel] = useState('11')
+  const [type, setType] = useState('Troop')
+  const [image, setImage] = useState(null)
+  const [elixer, setElixir] = useState('?')
+  const [onCardTop, setOnCardTop] = useState(true)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <header>Clash Royale card maker</header>
+
+      <div className='container'>
+        {onCardTop && (
+          <>
+          <div className='inputs' tabIndex={0}>
+            <label>
+              <div className='label'>Name</div>
+              <Name text={name} setName={setName} />
+            </label>
+            <label>
+              <div className='label'>Level</div>
+              <Level level={level} setLevel={setLevel} />
+            </label>
+            <label>
+              <div className='label'>Rarity</div>
+              <Rarity rarity={rarity} setRarity={setRarity} />
+            </label>
+            <label>
+              <div className='label'>Type</div>
+              <Type type={type} setType={setType} />
+            </label>
+            <label>
+              <div className='label'>Image</div>
+              <ImageUpload setImage={setImage} />
+            </label>
+            <label>
+              <div className='label'>Elixir</div>
+              <Elixir elixer={elixer} setElixir={setElixir} />
+            </label>
+          </div>
+          {/* <div className='inputs'></div> */}
+          </>
+        )}
+
+
+        <div className='card'>
+
+          <div className='cardTop'>
+
+            <div className='card-frame'>
+              <DisplayImage image={image} elixer={elixer} />
+            </div>
+
+            <div className='display'>
+              <div className='flexCol'>
+                <DisplayName text={name} />
+                <DisplayLevel level={level} />
+              </div>
+              <div className='flexRow'>
+                <div className={rarity}>
+                  <DisplayRarity rarity={rarity} />
+                </div>
+                <DisplayType type={type} />
+              </div>
+            </div>
+
+          </div>
+
+          <div className='cardBottom'>
+
+          </div>
+
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
   )
 }
