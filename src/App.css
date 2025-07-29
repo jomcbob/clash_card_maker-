@@ -4,7 +4,7 @@ body {
   border: 0;
   width: 100svw;
   min-height: 100vh;
-  background: url(imgs/background2.png);
+  background: url(/imgs/background2.png);
   background-color: lightblue;
   background-size: cover; 
 }
