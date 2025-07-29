@@ -4,7 +4,8 @@ body {
   border: 0;
   width: 100svw;
   min-height: 100vh;
-  background: url(./assets/imgs/background.png);
+  background: url(imgs/background2.png);
+  background-color: lightblue;
   background-size: cover; 
 }
 
@@ -41,16 +42,22 @@ label {
   min-height: 90vh;
   display: flex;
   height: 90%;
+  width: 100vw;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap-reverse;
-  gap: 2vh;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.elixir {
+  color: palevioletred;
 }
 
 .card {
   height: 60vh;
   width: 50vh;
-  background-color: rgba(173, 216, 230, 0.7);
+  background: linear-gradient( rgba(0, 0, 0, 0),  rgba(53, 24, 122, 0.7));
   padding: 1vh;
   border-radius: 3%;
   display: flex;
@@ -58,7 +65,9 @@ label {
   font-size: 3vh;
   gap: 2vh;
   border: 0.5vh solid #ccc;
+  box-sizing: border-box;
 }
+
 
 .rarity-icons {
   display: flex;
@@ -96,17 +105,40 @@ label {
   display: flex;
 }
 
-.inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 5vh;
-  padding: 5vh;
-  width: 30%;
-  min-height: 300px;
-  max-height: 70vh;
-  overflow-y: scroll;
+.changeInput {
+  width: 100%;
+  background-color: #23549c;
+  padding: 2vh;
+  max-height: 60vh;
   border-radius: 10px;
   background-color: rgb(95, 158, 160, 0.5);
+  display: flex;
+  justify-content: space-between;
+  font-size: 3vh;
+  color: white;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.select_inputs {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+.inputs {
+  gap: 5vh;
+  padding: 2vh;
+  width: 100%;
+  max-height: 50vh;
+  overflow-y: scroll;
+  border-radius: 10px;
+  background-color: rgb(95, 158, 160, 0.6);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-items: center;
 } 
 
 .inputs * {
@@ -119,8 +151,10 @@ label {
   min-height: fit-content;
 }
 
-.inputs *:hover:not(label):not(.label),
-.inputs *:focus:not(label):not(.label) {
+ .inputs 
+ input:hover, button:hover, select:hover,
+ input:focus, button:focus, select:focus 
+ {
   background-color: gray;
   outline: 4px auto black;
   color: white;
@@ -139,13 +173,13 @@ label {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  background-color:#CCCCCC;
+  background-color: #CCCCCC;
   width: 14vh;
 }
 
 .flag {
   width: 80%;
-  background-color:#23549c;
+  background-color: #23549c;
 }
 
 .common {
@@ -178,8 +212,16 @@ label {
 }
 
 .champion {
-  background: linear-gradient(135deg, #FFA500, #FFD700);
-  text-shadow: 0 0 5px rgba(0, 104, 230, 0.7);
+  background: linear-gradient(
+    135deg,
+    #fffaa0 0%,
+    #fff275 25%,
+    #ffe259 50%,
+    #ffd700 75%,
+    #ffec8b 100%
+  );
+  text-shadow: 0 0 4px rgba(255, 255, 200, 0.6),
+               0 0 8px rgba(255, 230, 100, 0.5);
   border-radius: 10px;
 }
 
@@ -205,6 +247,73 @@ label {
   flex: auto;
   border-radius: 10px;
   background-color: white;
+  overflow: auto;
+}
+
+.gridBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start; 
+  gap: 5px;
+  padding: 5px;
+}
+
+.stat img {
+  height: 50px;
+  width: 50px;
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.stat {
+  box-sizing: border-box;
+  border: 2px solid gray;
+  background: rgb(191, 191, 191);
+  width: 100%;
+  height: 60px;
+  padding: 5px;
+  display: flex;
+  font-size: large;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.statValue {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValueTop {
+  font-size: calc(1em);
+}
+
+.statValueBottom {
+  font-size: calc(1em + 2px);
+  color: white;
+  text-shadow:
+  -1px -1px 0 black,
+   1px -1px 0 black,
+  -1px  1px 0 black,
+   1px  1px 0 black;
+}
+
+.hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.hover:hover {
+  background-color: rgb(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .card-frame img {
@@ -214,15 +323,67 @@ label {
   object-position: center;
 }
 
-@media (max-width: 600px) {
-  .card {
-    width: 90vw;
-    height: auto;
-  }
+.statBox  {
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .inputs {
-    width: 90vw;
-  }
+.inputs img {
+  height: 50px;
+  width: 50px;
+}
+
+.statImg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  word-break: normal;
+}
+
+.inputs-wrapper {
+  box-sizing: border-box;
+  position: relative;
+  width: max(50%, 50vh);
+  height: 60vh;
+  margin: 0;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-shrink: 0;
+}
+
+.select_inputs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  box-sizing: border-box;
+}
+
+.select_inputs.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  margin: 0; 
+}
+
+.name {
+  color: white;
+  text-shadow:
+  -1px -1px 0 black,
+   1px -1px 0 black,
+  -1px  1px 0 black,
+   1px  1px 0 black;
+   font-size: calc(1.5em);
+}
+
+@media (max-width: 600px) {
 
   .flexRow {
     flex-wrap: wrap;
